@@ -9,11 +9,11 @@
         </div>
       </div>
     </div>
-    <div class="dashboard__loading" v-if="initialLoading">
+    <div class="dashboard__loading" v-show="initialLoading">
       <img class="dashboard__loading-img" src="../../assets/images/SpinnerTransparent.gif" />
     </div>
-    <div class="dashboard__empty-state" v-else>
-      <div class="dashboard__list-card-container" v-if="listActivity.length > 0">
+    <div class="dashboard__empty-state" v-show="!initialLoading">
+      <div class="dashboard__list-card-container" v-show="listActivity.length > 0">
         <div dt-cy="activity-item" class="dashboard__list-card" v-for="(dt,index) in listActivity" :key="index">
           <p dt-cy="activity-item-title" class="dashboard__list-card-text" @click="moveToDetail(dt.id)">{{dt.title}}</p>
           <div class="dashboard__list-card-bottom-section">
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div @click="createNewActivity()" v-else>
+      <div @click="createNewActivity()" v-show="listActivity.length === 0">
         <ActivityEmptyStateVue :imageNumber="1"></ActivityEmptyStateVue>
       </div>
     </div>
