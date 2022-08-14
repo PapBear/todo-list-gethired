@@ -17,7 +17,7 @@
           <div data-cy="modal-add-priority-dropdown" class="modal__add-content-body-priority" :class="{'modal__add-content-body-priority_opened': openDropdown}" @click="setDropDown()">
             <StatusView :status="selectedPriority.value" :bigger="true" v-if="!openDropdown"></StatusView>
             <p class="modal__add-content-body-priority-text" v-if="!openDropdown">{{selectedPriority.text}}</p>
-            <p class="modal__add-content-body-priority-text modal__add-content-body-priority-text_opened" v-else>Pilih priority</p>
+            <p data-cy=modal-add-priority-item class="modal__add-content-body-priority-text modal__add-content-body-priority-text_opened" v-else>Pilih priority</p>
             <div class="modal__add-content-body-priority-chevron">
               <ChevronDown v-if="!openDropdown"></ChevronDown>
               <ChevronUp v-else></ChevronUp>
