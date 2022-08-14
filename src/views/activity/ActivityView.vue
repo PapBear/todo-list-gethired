@@ -5,8 +5,8 @@
         <div data-cy="todo-back-button" class="activity-detail__header-back" @click="backToDashboard()">
           <ChevronLeftVue></ChevronLeftVue>
         </div>
-        <input data-cy="todo-title" class="activity-detail__header-text" :class="{'activity-detail__header-text_focused': inputFocused}" v-model="inputValue" v-show="inputFocused === true" @blur="setInputFocus(false)">
-        <p data-cy="todo-title" class="activity-detail__header-text" @click="setInputFocus(true)" v-show="inputFocused === false">{{inputValue}}</p>
+        <input data-cy="todo-title" class="activity-detail__header-text" :class="{'activity-detail__header-text_focused': inputFocused}" v-model="inputValue" v-if="inputFocused === true" @blur="setInputFocus(false)">
+        <p data-cy="todo-title" class="activity-detail__header-text" @click="setInputFocus(true)" v-else>{{inputValue}}</p>
         <div data-cy="todo-title-edit-button" @click="setInputFocus(true)" class="activity-detail__header-edit">
           <EditIcon></EditIcon>
         </div>
@@ -214,10 +214,10 @@ export default {
     },
     setInputFocus(param) {
       this.inputFocused = param
-      const elementInput = document.getElementsByClassName("activity-detail__header-text")[0]
+      const elementInput = document.getElementsByClassName("activity-detail__header-text")
       setTimeout(() => {
-        elementInput.focus()
-      })
+        elementInput[0].focus()
+      }, 100)
 
       if(param === false) {
         this.updateTitle()
