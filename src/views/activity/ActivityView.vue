@@ -33,9 +33,9 @@
             </div>
           </div>
         </div>
-        <div data-cy="todo-add-button" class="activity-detail__header-button-shape">
+        <div data-cy="todo-add-button" class="activity-detail__header-button-shape" @click="setVisibilityAddPopup()">
           <Plus></Plus>
-          <p class="activity-detail__header-button-shape-text" @click="setVisibilityAddPopup()">Tambah</p>
+          <p class="activity-detail__header-button-shape-text">Tambah</p>
         </div>
       </div>
     </div>
