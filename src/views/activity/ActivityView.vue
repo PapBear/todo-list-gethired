@@ -18,7 +18,7 @@
           </div>
           <div class="activity-detail__header-button-sort-menu-container" v-if="sortPopup">
           <!-- dt === 'Terbaru' ? 'sort-latest' : dt === 'Terlama' ? 'sort-oldest' : dt === 'A-Z' ? 'sort-az' : dt === 'Z-A' ? 'sort-za' : 'sort-unfinished' -->
-            <div data-cy="sort-selecti"  class="activity-detail__header-button-sort-menu" v-for="(dt, index) in sortList" :key="index" @click="selectSort(dt)">
+            <div data-cy="sort-selection"  class="activity-detail__header-button-sort-menu" v-for="(dt, index) in sortList" :key="index" @click="selectSort(dt)">
               <div class="activity-detail__header-button-sort-menu-item">
                 <SortLatest v-if="dt === 'Terbaru'"></SortLatest>
                 <SortOldest v-else-if="dt === 'Terlama'"></SortOldest>
