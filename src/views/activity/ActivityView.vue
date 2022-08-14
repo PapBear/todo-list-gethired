@@ -113,7 +113,6 @@ export default {
   data() {
     return {
       listItem: [],
-      originalListItem: [],
       selectedData: 0,
       deletePopup: false,
       addPopup: false,
@@ -139,7 +138,6 @@ export default {
       this.$http.get("https://todo.api.devcode.gethired.id/activity-groups/"+this.$route.params.id).then((response) => {
         this.initialLoading = false
         this.listItem = response.data
-        this.originalListItem = response.data
         this.selectSort("Terbaru")
         this.listItem.todo_items.forEach(dt => {
           if(dt.is_active === 0) {
@@ -157,10 +155,6 @@ export default {
       this.$http.patch("https://todo.api.devcode.gethired.id/activity-groups/"+this.$route.params.id, {title: this.inputValue ? this.inputValue : "-"}).then((response) => {
         this.listItem = {
           ...this.listItem,
-          title: response.data.title
-        }
-        this.originalListItem = {
-          ...this.originalListItem,
           title: response.data.title
         }
       }, err => {
@@ -241,11 +235,17 @@ export default {
       this.selectedSort = data
       this.sortPopup = false
       if(data === "Terbaru") {
-        this.listItem = this.originalListItem
+        this.listItem.todo_items.sort((a, b) => {
+          if(a.id < b.id ) { return -1; }
+          if(a.id > b.id ) { return 1; }
+          return 0;
+        })
       } else if(data === "Terlama") {
-        const originalData = JSON.parse(JSON.stringify(this.originalListItem))
-        this.listItem = originalData
-        this.listItem.todo_items.reverse()
+        this.listItem.todo_items.sort((a, b) => {
+          if(a.id < b.id ) { return 1; }
+          if(a.id > b.id ) { return -1; }
+          return 0;
+        })
       } else if(data === "A-Z") {
         this.listItem.todo_items.sort((a, b) => {
           if(a.title.toLowerCase() < b.title.toLowerCase() ) { return -1; }

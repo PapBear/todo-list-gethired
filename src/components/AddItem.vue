@@ -35,8 +35,8 @@
         </div>
 
       </div>
-      <div data-cy="modal-add-save-button" class="modal__add-content-button" @click="typeModal === 'edit' ? editItem() : createNewItem()">
-        <div class="modal__add-content-button-shape" :class="{'modal__add-content-button-shape_disabled': inputItem === ''}" >
+      <div class="modal__add-content-button">
+        <div data-cy="modal-add-save-button" @click="typeModal === 'edit' ? editItem() : createNewItem()" class="modal__add-content-button-shape" :class="{'modal__add-content-button-shape_disabled': inputItem === ''}" >
           <p class="modal__add-content-button-shape-text">Simpan</p>
         </div>
       </div>
