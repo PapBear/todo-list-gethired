@@ -1,0 +1,21 @@
+//Settings
+@import "settings/variables";
+@import "settings/color";
+
+//Tools
+@import "tools/mixins";
+@import "tools/pseudo";
+
+//Generic
+@import "generic/reset";
+
+//Elements
+@import "elements/fonts";
+
+//Components
+@import "component/header.scss";
+@import "component/activityEmptyState.scss";
+
+// Views
+@import "views/dashboard.scss";
+@import "views/activity.scss";
