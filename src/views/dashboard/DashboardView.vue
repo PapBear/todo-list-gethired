@@ -14,12 +14,12 @@
     </div>
     <div class="dashboard__empty-state" v-show="!initialLoading">
       <div class="dashboard__list-card-container" v-show="listActivity.length > 0">
-        <div dt-cy="activity-item" class="dashboard__list-card" v-for="(dt,index) in listActivity" :key="index">
-          <p dt-cy="activity-item-title" class="dashboard__list-card-text" @click="moveToDetail(dt.id)">{{dt.title}}</p>
+        <div data-cy="activity-item" class="dashboard__list-card" v-for="(dt,index) in listActivity" :key="index">
+          <p data-cy="activity-item-title" class="dashboard__list-card-text" @click="moveToDetail(dt.id)">{{dt.title}}</p>
           <div class="dashboard__list-card-bottom-section">
             <div class="dashboard__list-card-bottom-section-wrapper">
-              <p dt-cy="activity-item-date" class="dashboard__list-card-bottom-section-date">{{dt.created_at | moment("D MMMM YYYY")}}</p>
-              <div dt-cy="activity-item-delete-button" class="dashboard__list-card-bottom-section-button" @click="setVisibilityDeletePopup(dt)">
+              <p data-cy="activity-item-date" class="dashboard__list-card-bottom-section-date">{{dt.created_at | moment("D MMMM YYYY")}}</p>
+              <div data-cy="activity-item-delete-button" class="dashboard__list-card-bottom-section-button" @click="setVisibilityDeletePopup(dt)">
                 <DeleteButton></DeleteButton>
               </div>
             </div>
