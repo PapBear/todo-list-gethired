@@ -126,7 +126,7 @@ export default {
       editStatus: "",
       typePassed: "",
       idPassed: 0,
-      initialLoading: true
+      initialLoading: true,
     }
   },
   mounted() {
@@ -236,14 +236,14 @@ export default {
       this.sortPopup = false
       if(data === "Terbaru") {
         this.listItem.todo_items.sort((a, b) => {
-          if(a.id < b.id ) { return -1; }
-          if(a.id > b.id ) { return 1; }
+          if(a.id < b.id ) { return 1; }
+          if(a.id > b.id ) { return -1; }
           return 0;
         })
       } else if(data === "Terlama") {
         this.listItem.todo_items.sort((a, b) => {
-          if(a.id < b.id ) { return 1; }
-          if(a.id > b.id ) { return -1; }
+          if(a.id < b.id ) { return -1; }
+          if(a.id > b.id ) { return 1; }
           return 0;
         })
       } else if(data === "A-Z") {
